@@ -25,7 +25,7 @@
         <img src="logo.png" alt="Aman Telecom Logo" class="hero-logo">
         <h1>Your Trusted Mobile Partner</h1>
         <p>Expert smartphone repairs, software solutions, genuine accessories, and instant recharges under one roof.</p>
-        <a href="url?id=2" class="cta-btn" target="_blank">💬 Contact on WhatsApp</a>
+        <a href="https://wa.me/917657998779" class="cta-btn" target="_blank">💬 Contact on WhatsApp</a>
     </section>
 
     <div class="container" id="services">
@@ -63,26 +63,30 @@
     <div class="container" id="repair-form">
         <h2 class="section-title">Request a Repair</h2>
         <div class="form-card">
-            <!-- Replace YOUR_FORMSPREE_ID with your Formspree form ID to receive email notifications -->
-            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="repair-form">
+            <form action="https://formsubmit.co/amantelecom2501@gmail.com" method="POST" class="repair-form">
+                <!-- FormSubmit Settings -->
+                <input type="hidden" name="_subject" value="🛠️ New Repair Request - Aman Telecom">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    <input type="text" id="name" name="Name" placeholder="Enter your full name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Phone / WhatsApp Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                    <input type="tel" id="phone" name="Phone Number" placeholder="+91 XXXXX XXXXX" required>
                 </div>
 
                 <div class="form-group">
                     <label for="device">Device Model</label>
-                    <input type="text" id="device" name="device" placeholder="e.g., iPhone 13, Samsung S21, Redmi Note 10" required>
+                    <input type="text" id="device" name="Device Model" placeholder="e.g., iPhone 13, Samsung S21, Redmi Note 10" required>
                 </div>
 
                 <div class="form-group">
                     <label for="repair-type">Select Repair Type</label>
-                    <select id="repair-type" name="repair_type" required>
+                    <select id="repair-type" name="Repair Category" required>
                         <option value="" disabled selected>-- Choose Main Issue Category --</option>
                         <option value="Display / Screen Repair">📱 Display / Screen Replacement</option>
                         <option value="Battery Replacement">🔋 Battery Replacement</option>
@@ -107,7 +111,7 @@
                         <button type="button" class="chip" onclick="addSuggestion('No sound / Mic not working')">🎙️ Mic / Speaker Fault</button>
                         <button type="button" class="chip" onclick="addSuggestion('Phone stuck on logo / rebooting')">🔄 Bootloop / Software</button>
                     </div>
-                    <textarea id="issue" name="issue" rows="4" placeholder="Select suggestions above or describe your issue here..." required></textarea>
+                    <textarea id="issue" name="Problem Description" rows="4" placeholder="Select suggestions above or describe your issue here..." required></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Submit Repair Request 🚀</button>
@@ -128,7 +132,6 @@
         <p>&copy; 2026 Deepxk17. All rights reserved.</p>
     </footer>
 
-    <!-- Script to handle clicking suggestion chips -->
     <script>
         function addSuggestion(text) {
             const textarea = document.getElementById('issue');
