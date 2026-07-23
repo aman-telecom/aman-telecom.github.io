@@ -178,3 +178,19 @@ footer {
     .hero h1 { font-size: 2rem; }
     .nav-links { display: none; }
 }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+}
+
+.logo-img {
+    height: 40px; /* Adjust height according to your logo size */
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px; /* Optional rounded corners */
+}
