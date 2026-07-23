@@ -31,7 +31,7 @@ body {
     min-height: 100vh;
 }
 
-/* Background Ambient Glows for Glass Refraction */
+/* Background Ambient Glows */
 body::before, body::after {
     content: '';
     position: fixed;
@@ -55,7 +55,7 @@ body::after {
     right: -50px;
 }
 
-/* iOS Glass Navigation Bar */
+/* Navigation Bar */
 header {
     background: rgba(18, 18, 20, 0.6);
     backdrop-filter: blur(20px) saturate(180%);
@@ -113,7 +113,7 @@ nav {
     width: 95px;
     height: auto;
     margin-bottom: 1.5rem;
-    border-radius: 22px; /* iOS Icon Squircle radius */
+    border-radius: 22px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid var(--glass-border);
 }
@@ -136,7 +136,7 @@ nav {
     font-weight: 400;
 }
 
-/* iOS Liquid Glass CTA Button */
+/* iOS Liquid Glass Button */
 .cta-btn {
     background: rgba(48, 209, 88, 0.18);
     backdrop-filter: blur(20px) saturate(180%);
@@ -144,7 +144,7 @@ nav {
     color: #30d158;
     border: 1px solid rgba(48, 209, 88, 0.35);
     padding: 0.9rem 2.2rem;
-    border-radius: 980px; /* iOS Capsule shape */
+    border-radius: 980px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.05rem;
@@ -155,7 +155,6 @@ nav {
     overflow: hidden;
 }
 
-/* Glass Reflection Highlight */
 .cta-btn::before {
     content: '';
     position: absolute;
@@ -180,10 +179,6 @@ nav {
     box-shadow: 0 12px 30px rgba(48, 209, 88, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
-.cta-btn:active {
-    transform: translateY(-1px) scale(0.98);
-    box-shadow: 0 4px 15px rgba(48, 209, 88, 0.2);
-}
 /* Container & Sections */
 .container {
     max-width: 1100px;
@@ -206,46 +201,100 @@ nav {
     gap: 1.8rem;
 }
 
-/* iOS Glass Cards */
-.card {
-    background: var(--glass-card-bg);
+/* iOS Slider Cards */
+.slider-card {
+    background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(25px) saturate(190%);
     -webkit-backdrop-filter: blur(25px) saturate(190%);
-    border: 1px solid var(--glass-border);
-    padding: 2.2rem 1.6rem;
-    border-radius: 24px; /* iOS Smooth Rounded Corners */
-    text-align: center;
-    box-shadow: var(--glass-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-}
-
-.card-icon {
-    font-size: 2.8rem;
-    margin-bottom: 1.2rem;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-}
-
-.card h3 {
-    margin-bottom: 0.6rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-.card p {
+.slider-card p {
     color: var(--text-muted);
-    font-size: 0.95rem;
-    font-weight: 400;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding: 0 0.5rem;
+    text-align: left;
 }
 
-/* Contact Info Glass Panel */
+/* iOS Slider Track */
+.slider-track {
+    position: relative;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 980px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Sliding Icon Handle */
+.slider-thumb {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+    z-index: 2;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s;
+}
+
+/* Shimmering iOS Text */
+.slider-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: linear-gradient(90deg, #6e6e73 0%, #ffffff 50%, #6e6e73 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: iosShimmer 2.5s infinite linear;
+    pointer-events: none;
+    z-index: 1;
+    padding-left: 20px;
+}
+
+@keyframes iosShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Hover / Slide Interaction */
+.slider-card:hover .slider-thumb {
+    transform: translateX(180px);
+    background: rgba(48, 209, 88, 0.4);
+    border-color: rgba(48, 209, 88, 0.8);
+}
+
+.slider-card:hover .slider-track {
+    border-color: rgba(48, 209, 88, 0.4);
+    box-shadow: 0 0 15px rgba(48, 209, 88, 0.2), inset 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.slider-card:hover {
+    border-color: rgba(48, 209, 88, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* Contact Info Panel */
 .contact-info {
     background: var(--glass-card-bg);
     backdrop-filter: blur(25px) saturate(190%);
