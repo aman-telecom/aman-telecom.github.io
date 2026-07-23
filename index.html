@@ -71,17 +71,17 @@
 
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" id="name" name="Name" placeholder="Enter your full name" required>
+                    <input type="text" id="name" name="Name" placeholder="Enter your full name" pattern="[A-Za-z\s]+" title="Please enter letters and spaces only" maxlength="50" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone / WhatsApp Number</label>
-                    <input type="tel" id="phone" name="Phone Number" placeholder="+91 XXXXX XXXXX" required>
+                    <label for="phone">10-Digit Mobile / WhatsApp Number</label>
+                    <input type="tel" id="phone" name="Phone Number" placeholder="e.g. 9876543210" pattern="[6-9][0-9]{9}" maxlength="10" title="Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9" required>
                 </div>
 
                 <div class="form-group">
                     <label for="device">Device Model</label>
-                    <input type="text" id="device" name="Device Model" placeholder="e.g., iPhone 13, Samsung S21, Redmi Note 10" required>
+                    <input type="text" id="device" name="Device Model" placeholder="e.g., iPhone 13, Samsung S21, Redmi Note 10" minlength="2" maxlength="40" required>
                 </div>
 
                 <div class="form-group">
@@ -111,7 +111,7 @@
                         <button type="button" class="chip" onclick="addSuggestion('No sound / Mic not working')">🎙️ Mic / Speaker Fault</button>
                         <button type="button" class="chip" onclick="addSuggestion('Phone stuck on logo / rebooting')">🔄 Bootloop / Software</button>
                     </div>
-                    <textarea id="issue" name="Problem Description" rows="4" placeholder="Select suggestions above or describe your issue here..." required></textarea>
+                    <textarea id="issue" name="Problem Description" rows="4" placeholder="Select suggestions above or describe your issue here..." minlength="10" required></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Submit Repair Request 🚀</button>
