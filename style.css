@@ -1,30 +1,66 @@
 :root {
-    --primary: #3b82f6;      /* Modern vibrant blue */
-    --primary-hover: #60a5fa;
-    --dark-bg: #0f172a;      /* Deep dark background */
-    --card-bg: #1e293b;      /* Dark slate cards */
-    --text-main: #f8fafc;    /* Clean white text */
-    --text-muted: #94a3b8;   /* Muted grey text */
-    --accent: #22c55e;       /* WhatsApp green */
-    --border: #334155;
+    /* iOS Glassmorphism Palette */
+    --ios-blue: #0a84ff;
+    --ios-green: #30d158;
+    --dark-bg: #0b0f19;
+    
+    /* Liquid Glass Variables */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-card-bg: rgba(255, 255, 255, 0.07);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    /* Typography */
+    --text-main: #f5f5f7;
+    --text-muted: #a1a1a6;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
     background-color: var(--dark-bg);
     color: var(--text-main);
     line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
 }
 
+/* Background Ambient Glows for Glass Refraction */
+body::before, body::after {
+    content: '';
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+body::before {
+    background: #007aff;
+    top: -50px;
+    left: -50px;
+}
+
+body::after {
+    background: #5856d6;
+    bottom: -50px;
+    right: -50px;
+}
+
+/* iOS Glass Navigation Bar */
 header {
-    background-color: #1e293b;
-    border-bottom: 1px solid var(--border);
+    background: rgba(18, 18, 20, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--glass-border);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -40,78 +76,94 @@ nav {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary);
-    letter-spacing: 0.5px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1a6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 1.8rem;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--text-muted);
     font-weight: 500;
-    transition: color 0.3s;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--primary);
+    color: var(--text-main);
 }
 
+/* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #0f172a, #1e1b4b);
-    color: var(--text-main);
     text-align: center;
-    padding: 4rem 2rem;
-    border-bottom: 1px solid var(--border);
+    padding: 5rem 2rem 4rem;
+    position: relative;
 }
 
 .hero-logo {
-    width: 90px;
+    width: 95px;
     height: auto;
-    margin-bottom: 1.2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.5rem;
+    border-radius: 22px; /* iOS Icon Squircle radius */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass-border);
 }
 
 .hero h1 {
-    font-size: 2.7rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.75) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
+    font-size: 1.15rem;
+    max-width: 580px;
+    margin: 0 auto 2.2rem;
     color: var(--text-muted);
+    font-weight: 400;
 }
 
+/* iOS Glass Button */
 .cta-btn {
-    background-color: var(--accent);
-    color: white;
-    padding: 0.8rem 1.8rem;
-    border-radius: 30px;
+    background: rgba(48, 209, 88, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    color: #30d158;
+    border: 1px solid rgba(48, 209, 88, 0.4);
+    padding: 0.85rem 2rem;
+    border-radius: 980px; /* iOS Capsule shape */
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1rem;
     display: inline-block;
-    transition: background 0.3s, transform 0.2s;
-    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 20px rgba(48, 209, 88, 0.15);
 }
 
 .cta-btn:hover {
-    background-color: #16a34a;
-    transform: translateY(-2px);
+    background: rgba(48, 209, 88, 0.35);
+    transform: scale(1.03);
+    color: #ffffff;
+    box-shadow: 0 6px 25px rgba(48, 209, 88, 0.3);
 }
 
+/* Container & Sections */
 .container {
     max-width: 1100px;
-    margin: 4rem auto;
+    margin: 3.5rem auto;
     padding: 0 2rem;
 }
 
@@ -119,70 +171,89 @@ nav {
     text-align: center;
     margin-bottom: 2.5rem;
     font-size: 2rem;
-    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
 }
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.8rem;
 }
 
+/* iOS Glass Cards */
 .card {
-    background: var(--card-bg);
-    padding: 2.2rem 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
+    background: var(--glass-card-bg);
+    backdrop-filter: blur(25px) saturate(190%);
+    -webkit-backdrop-filter: blur(25px) saturate(190%);
+    border: 1px solid var(--glass-border);
+    padding: 2.2rem 1.6rem;
+    border-radius: 24px; /* iOS Smooth Rounded Corners */
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
 .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
 
 .card h3 {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
+    font-size: 1.25rem;
+    font-weight: 600;
     color: var(--text-main);
 }
 
 .card p {
     color: var(--text-muted);
     font-size: 0.95rem;
+    font-weight: 400;
 }
 
+/* Contact Info Glass Panel */
 .contact-info {
-    background: var(--card-bg);
-    padding: 2.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border);
+    background: var(--glass-card-bg);
+    backdrop-filter: blur(25px) saturate(190%);
+    -webkit-backdrop-filter: blur(25px) saturate(190%);
+    border: 1px solid var(--glass-border);
+    padding: 2.8rem 2rem;
+    border-radius: 24px;
     text-align: center;
-    line-height: 2.2;
+    line-height: 2.3;
     color: var(--text-muted);
+    box-shadow: var(--glass-shadow);
 }
 
 .contact-info strong {
     color: var(--text-main);
+    font-weight: 600;
 }
 
+/* Footer */
 footer {
-    background: #090d16;
+    background: rgba(10, 10, 12, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     color: var(--text-muted);
     text-align: center;
-    padding: 1.5rem;
-    margin-top: 4rem;
-    border-top: 1px solid var(--border);
+    padding: 2rem;
+    margin-top: 5rem;
+    border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
+    .hero h1 { font-size: 2.2rem; }
     .nav-links { display: none; }
 }
